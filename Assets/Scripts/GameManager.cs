@@ -54,9 +54,6 @@ public class GameManager : MonoBehaviour
     private void RemoveParcelFromBelt(GameObject parcel)
     {
         parcel.SetActive(false);
-        BoxItem boxItem = parcel.GetComponent<BoxItem>();
-        boxItem.IsGood = Random.value > 0.5f;
-        parcel.transform.position = spawnPoint.position;
         parcel.GetComponent<Rigidbody>().Sleep();
         objectPool.Enqueue(parcel);
     }
@@ -64,6 +61,10 @@ public class GameManager : MonoBehaviour
     private void SpawnParcel()
     {
         GameObject objectToSpawn = objectPool.Dequeue();
+        BoxItem boxItem = objectToSpawn.GetComponent<BoxItem>();
+        boxItem.IsGood = Random.value > 0.5f;
+        objectToSpawn.transform.position = spawnPoint.position;
+        objectToSpawn.transform.rotation = Quaternion.Euler(Random.Range(0, 359), Random.Range(0, 359), Random.Range(0, 359));
         objectToSpawn.SetActive(true);
         objectToSpawn.GetComponent<Rigidbody>().WakeUp();
     }
