@@ -6,18 +6,11 @@ public class GameManager : MonoBehaviour
     public Transform spawnPoint;
     public int poolSize;
     public GameObject parcelPrefab;
-    public UnityEngine.UI.Text scoreText;
     private Queue<GameObject> objectPool;
-
-    int numberOfParcelsScanned;
-    int numberOfGoodParcels;
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        numberOfParcelsScanned = 0;
-        numberOfGoodParcels = 0;
-
         GameObject box;
         BoxItem boxItem;
         objectPool = new Queue<GameObject>();
@@ -41,14 +34,6 @@ public class GameManager : MonoBehaviour
     private void ScannedParcel(bool isGood)
     {
         SpawnParcel();
-        numberOfParcelsScanned++;
-        if (isGood)
-        {
-            numberOfGoodParcels++;
-        }
-        scoreText.text = "Good : "+numberOfGoodParcels
-        + "\nBad : " +(numberOfParcelsScanned-numberOfGoodParcels)
-        + "\nTotal : " + numberOfParcelsScanned;
     }
 
     private void RemoveParcelFromBelt(GameObject parcel)
