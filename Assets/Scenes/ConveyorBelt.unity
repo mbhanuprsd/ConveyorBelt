@@ -471,6 +471,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 12
   gravity: -9.81
+  groundCheck: {fileID: 1863418214}
+  groundDistance: 0.4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  jumpHeight: 3
 --- !u!143 &393433954
 CharacterController:
   m_ObjectHideFlags: 0
@@ -721,9 +727,9 @@ GameObject:
   - component: {fileID: 1257892665}
   - component: {fileID: 1257892664}
   - component: {fileID: 1257892663}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
